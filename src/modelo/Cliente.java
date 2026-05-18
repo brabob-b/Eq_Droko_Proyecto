@@ -13,8 +13,6 @@ public class Cliente implements Serializable {
     private String telefono;
     private String nombreContacto;
     private double porcentajeDescuento; // 0.0 - 70.0
-    private String territorio;
-    private int arroz; 
 
     public Cliente(char tipoIdentificacion, String numeroIdentificacion, boolean empresa,
                    String nombre, String email, String telefono,
