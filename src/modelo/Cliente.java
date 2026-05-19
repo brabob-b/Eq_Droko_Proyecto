@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class Cliente implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    
     private char tipoIdentificacion; // C: cédula, N: Nit
     private String numeroIdentificacion;
     private boolean empresa;
@@ -14,7 +15,6 @@ public class Cliente implements Serializable {
     private String nombreContacto;
     private double porcentajeDescuento; // 0.0 - 70.0
    
-
     public Cliente(char tipoIdentificacion, String numeroIdentificacion, boolean empresa,
                    String nombre, String email, String telefono,
                    String nombreContacto, double porcentajeDescuento) {
