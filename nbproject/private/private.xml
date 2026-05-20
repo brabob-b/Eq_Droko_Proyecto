@@ -2,6 +2,18 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/Users/brandonbonilla/Documents/Universidad/POO/Eq_Droko_Entrega_2%20/Eq_Droko_Proyecto/src/modelo/Destino.java</file>
+            <file>file:/Users/brandonbonilla/Documents/Universidad/POO/Eq_Droko_Entrega_2%20/Eq_Droko_Proyecto/test/modelo/DestinoTest.java</file>
+            <file>file:/Users/brandonbonilla/Documents/Universidad/POO/Eq_Droko_Entrega_2%20/Eq_Droko_Proyecto/test/modelo/PaqueteTuristicoTest.java</file>
+            <file>file:/Users/brandonbonilla/Documents/Universidad/POO/Eq_Droko_Entrega_2%20/Eq_Droko_Proyecto/test/modelo/VentaTest.java</file>
+            <file>file:/Users/brandonbonilla/Documents/Universidad/POO/Eq_Droko_Entrega_2%20/Eq_Droko_Proyecto/test/modelo/PaqueteTuristicoMultipleTest.java</file>
+            <file>file:/Users/brandonbonilla/Documents/Universidad/POO/Eq_Droko_Entrega_2%20/Eq_Droko_Proyecto/test/modelo/ClienteTest.java</file>
+            <file>file:/Users/brandonbonilla/Documents/Universidad/POO/Eq_Droko_Entrega_2%20/Eq_Droko_Proyecto/src/modelo/Venta.java</file>
+            <file>file:/Users/brandonbonilla/Documents/Universidad/POO/Eq_Droko_Entrega_2%20/Eq_Droko_Proyecto/src/modelo/PaqueteTuristicoMultiple.java</file>
+            <file>file:/Users/brandonbonilla/Documents/Universidad/POO/Eq_Droko_Entrega_2%20/Eq_Droko_Proyecto/src/vista/UsaGUIVenta.java</file>
+            <file>file:/Users/brandonbonilla/Documents/Universidad/POO/Eq_Droko_Entrega_2%20/Eq_Droko_Proyecto/test/modelo/PaqueteTuristicoUnicoTest.java</file>
+            <file>file:/Users/brandonbonilla/Documents/Universidad/POO/Eq_Droko_Entrega_2%20/Eq_Droko_Proyecto/src/modelo/Cliente.java</file>
+        </group>
     </open-files>
 </project-private>

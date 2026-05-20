@@ -1,101 +1,94 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit4TestClass.java to edit this template
- */
 package modelo;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
- * @author brandonbonilla
+ * Pruebas unitarias - Clase PaqueteTuristicoUnico
+ * @author Brandon Bonilla Buitrago
+ * @version 1.0 - Mayo 2026
  */
 public class PaqueteTuristicoUnicoTest {
-    
-    public PaqueteTuristicoUnicoTest() {
+
+    private PaqueteTuristicoUnico crearPaquete(int tarifaDia, int dias, int unidades) {
+        LinkedList<String> atr = new LinkedList<>();
+        atr.add("Playa Blanca");
+        Destino d = new Destino("Cartagena", dias, atr, true);
+        ArrayList<Destino> destinos = new ArrayList<>();
+        destinos.add(d);
+        return new PaqueteTuristicoUnico(
+                "PKG001", "Escapada Caribena Cartagena", "Recreacion",
+                "Descripcion de prueba del paquete unico turistico.",
+                "Cali", destinos, true, true, true, true, false,
+                tarifaDia, unidades, "Hotel Test", "Buffet");
     }
 
-    /**
-     * Test of getNombreHotel method, of class PaqueteTuristicoUnico.
-     */
-    @Test
-    public void testGetNombreHotel() {
-        System.out.println("getNombreHotel");
-        PaqueteTuristicoUnico instance = null;
-        String expResult = "";
-        String result = instance.getNombreHotel();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getTipoDesayuno method, of class PaqueteTuristicoUnico.
-     */
-    @Test
-    public void testGetTipoDesayuno() {
-        System.out.println("getTipoDesayuno");
-        PaqueteTuristicoUnico instance = null;
-        String expResult = "";
-        String result = instance.getTipoDesayuno();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setNombreHotel method, of class PaqueteTuristicoUnico.
-     */
-    @Test
-    public void testSetNombreHotel() {
-        System.out.println("setNombreHotel");
-        String nombreHotel = "";
-        PaqueteTuristicoUnico instance = null;
-        instance.setNombreHotel(nombreHotel);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setTipoDesayuno method, of class PaqueteTuristicoUnico.
-     */
-    @Test
-    public void testSetTipoDesayuno() {
-        System.out.println("setTipoDesayuno");
-        String tipoDesayuno = "";
-        PaqueteTuristicoUnico instance = null;
-        instance.setTipoDesayuno(tipoDesayuno);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of calcularValorUnidad method, of class PaqueteTuristicoUnico.
-     */
     @Test
     public void testCalcularValorUnidad() {
-        System.out.println("calcularValorUnidad");
-        PaqueteTuristicoUnico instance = null;
-        int expResult = 0;
-        int result = instance.calcularValorUnidad();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        PaqueteTuristicoUnico p = crearPaquete(350000, 5, 2);
+        int resEsperado = 1750000;
+        int resObtenido = p.calcularValorUnidad();
+        System.out.println("Test #1 -> testCalcularValorUnidad");
+        System.out.println("Resultado Esperado=" + resEsperado);
+        System.out.println("Resultado Obtenido=" + resObtenido);
+        assertEquals(resEsperado, resObtenido);
     }
 
-    /**
-     * Test of toString method, of class PaqueteTuristicoUnico.
-     */
     @Test
-    public void testToString() {
-        System.out.println("toString");
-        PaqueteTuristicoUnico instance = null;
-        String expResult = "";
-        String result = instance.toString();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testCalcularValorTotal() {
+        PaqueteTuristicoUnico p = crearPaquete(350000, 5, 2);
+        int resEsperado = 3500000;
+        int resObtenido = p.calcularValorTotal();
+        System.out.println("Test #2 -> testCalcularValorTotal");
+        System.out.println("Resultado Esperado=" + resEsperado);
+        System.out.println("Resultado Obtenido=" + resObtenido);
+        assertEquals(resEsperado, resObtenido);
     }
-    
-}
+
+    @Test
+    public void testCalcularDuracionTotalDias() {
+        PaqueteTuristicoUnico p = crearPaquete(200000, 5, 1);
+        int resEsperado = 5;
+        int resObtenido = p.calcularDuracionTotalDias();
+        System.out.println("Test #3 -> testCalcularDuracionTotalDias");
+        System.out.println("Resultado Esperado=" + resEsperado);
+        System.out.println("Resultado Obtenido=" + resObtenido);
+        assertEquals(resEsperado, resObtenido);
+    }
+
+    @Test
+    public void testCantidadUnidadesMinimaUno() {
+        PaqueteTuristicoUnico p = crearPaquete(200000, 3, 0);
+        int resEsperado = 1;
+        int resObtenido = p.getCantidadUnidades();
+        System.out.println("Test #4 -> testCantidadUnidadesMinimaUno");
+        System.out.println("Resultado Esperado=" + resEsperado);
+        System.out.println("Resultado Obtenido=" + resObtenido);
+        assertEquals(resEsperado, resObtenido);
+    }
+
+    @Test
+    public void testNombreHotelAsignado() {
+        PaqueteTuristicoUnico p = crearPaquete(200000, 3, 1);
+        String resEsperado = "Hotel Test";
+        String resObtenido = p.getNombreHotel();
+        System.out.println("Test #5 -> testNombreHotelAsignado");
+        System.out.println("Resultado Esperado=" + resEsperado);
+        System.out.println("Resultado Obtenido=" + resObtenido);
+        assertEquals(resEsperado, resObtenido);
+    }
+
+    @Test
+    public void testTipoDesayunoAsignado() {
+        PaqueteTuristicoUnico p = crearPaquete(200000, 3, 1);
+        String resEsperado = "Buffet";
+        String resObtenido = p.getTipoDesayuno();
+        System.out.println("Test #6 -> testTipoDesayunoAsignado");
+        System.out.println("Resultado Esperado=" + resEsperado);
+        System.out.println("Resultado Obtenido=" + resObtenido);
+        assertEquals(resEsperado, resObtenido);
+    }
+
+}// fin class PaqueteTuristicoUnicoTest

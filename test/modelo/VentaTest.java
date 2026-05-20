@@ -12,15 +12,11 @@ import static org.junit.Assert.*;
  */
 public class VentaTest {
 
-    private Destino crearDestino(String lugar, int dias) {
+    private PaqueteTuristicoUnico crearPaqueteUnico(int tarifaDia, int dias, int unidades) {
         LinkedList<String> atr = new LinkedList<>();
         atr.add("Atractivo");
-        return new Destino(lugar, dias, atr, true);
-    }
-
-    private PaqueteTuristicoUnico crearPaqueteUnico(int tarifaDia, int dias, int unidades) {
         ArrayList<Destino> destinos = new ArrayList<>();
-        destinos.add(crearDestino("Cartagena", dias));
+        destinos.add(new Destino("Cartagena", dias, atr, true));
         return new PaqueteTuristicoUnico(
                 "PKG001", "Escapada Caribena Cartagena", "Recreacion",
                 "Descripcion de prueba del paquete para test de venta.",
@@ -28,13 +24,9 @@ public class VentaTest {
                 tarifaDia, unidades, "Hotel Test", "Buffet");
     }
 
-    private Cliente crearCliente(double descuento) {
-        return new Cliente('C', "1234567890", false, "Carlos Martinez",
-                "carlos@email.com", "3001234567", "Carlos Martinez", descuento);
-    }
-
     private Venta crearVenta(int numero, double descuento, int tarifaDia, int dias, int unidades) {
-        Cliente c = crearCliente(descuento);
+        Cliente c = new Cliente('C', "1234567890", false, "Carlos Martinez",
+                "carlos@email.com", "3001234567", "Carlos Martinez", descuento);
         ArrayList<PaqueteTuristico> paquetes = new ArrayList<>();
         paquetes.add(crearPaqueteUnico(tarifaDia, dias, unidades));
         return new Venta(numero, c, paquetes);
@@ -42,72 +34,112 @@ public class VentaTest {
 
     @Test
     public void testEstadoInicialActivo() {
-        // CP-001: al crear una venta el estado debe ser 'A'
         Venta v = crearVenta(1, 10.0, 350000, 5, 2);
-        assertEquals('A', v.getEstado());
+        char resEsperado = 'A';
+        char resObtenido = v.getEstado();
+        System.out.println("Test #1 -> testEstadoInicialActivo");
+        System.out.println("Resultado Esperado=" + resEsperado);
+        System.out.println("Resultado Obtenido=" + resObtenido);
+        assertEquals(resEsperado, resObtenido);
     }
 
     @Test
     public void testNumeroAsignado() {
         Venta v = crearVenta(5, 10.0, 350000, 5, 2);
-        assertEquals(5, v.getNumero());
+        int resEsperado = 5;
+        int resObtenido = v.getNumero();
+        System.out.println("Test #2 -> testNumeroAsignado");
+        System.out.println("Resultado Esperado=" + resEsperado);
+        System.out.println("Resultado Obtenido=" + resObtenido);
+        assertEquals(resEsperado, resObtenido);
     }
 
     @Test
     public void testFechaGeneracionNoNula() {
         Venta v = crearVenta(1, 10.0, 350000, 5, 2);
+        System.out.println("Test #3 -> testFechaGeneracionNoNula");
+        System.out.println("Resultado Esperado=not null");
+        System.out.println("Resultado Obtenido=" + v.getFechaHoraGeneracion());
         assertNotNull(v.getFechaHoraGeneracion());
     }
 
     @Test
     public void testCalcularValorTotalPaquetes() {
-        // tarifaDia=350000, 5 dias, 2 unidades => 350000*5*2 = 3500000
         Venta v = crearVenta(1, 10.0, 350000, 5, 2);
-        assertEquals(3500000, v.calcularValorTotalPaquetes());
+        int resEsperado = 3500000;
+        int resObtenido = v.calcularValorTotalPaquetes();
+        System.out.println("Test #4 -> testCalcularValorTotalPaquetes");
+        System.out.println("Resultado Esperado=" + resEsperado);
+        System.out.println("Resultado Obtenido=" + resObtenido);
+        assertEquals(resEsperado, resObtenido);
     }
 
     @Test
     public void testCalcularValorDescuento() {
-        // CP-013: valorTotal=3500000, descuento=10% => 350000
         Venta v = crearVenta(1, 10.0, 350000, 5, 2);
-        assertEquals(350000, v.calcularValorDescuento());
+        int resEsperado = 350000;
+        int resObtenido = v.calcularValorDescuento();
+        System.out.println("Test #5 -> testCalcularValorDescuento");
+        System.out.println("Resultado Esperado=" + resEsperado);
+        System.out.println("Resultado Obtenido=" + resObtenido);
+        assertEquals(resEsperado, resObtenido);
     }
 
     @Test
     public void testCalcularValorTotalPagar() {
-        // 3500000 - 350000 = 3150000
         Venta v = crearVenta(1, 10.0, 350000, 5, 2);
-        assertEquals(3150000, v.calcularValorTotalPagar());
+        int resEsperado = 3150000;
+        int resObtenido = v.calcularValorTotalPagar();
+        System.out.println("Test #6 -> testCalcularValorTotalPagar");
+        System.out.println("Resultado Esperado=" + resEsperado);
+        System.out.println("Resultado Obtenido=" + resObtenido);
+        assertEquals(resEsperado, resObtenido);
     }
 
     @Test
     public void testCalcularCantidadTotalUnidades() {
-        // 1 paquete con 2 unidades => total = 2
         Venta v = crearVenta(1, 10.0, 350000, 5, 2);
-        assertEquals(2, v.calcularCantidadTotalUnidadesPaquetes());
+        int resEsperado = 2;
+        int resObtenido = v.calcularCantidadTotalUnidadesPaquetes();
+        System.out.println("Test #7 -> testCalcularCantidadTotalUnidades");
+        System.out.println("Resultado Esperado=" + resEsperado);
+        System.out.println("Resultado Obtenido=" + resObtenido);
+        assertEquals(resEsperado, resObtenido);
     }
 
     @Test
     public void testActualizarEstadoCancelado() {
-        // CP-009: estado pasa a 'C'
         Venta v = crearVenta(1, 10.0, 350000, 5, 1);
         v.setEstado('C');
-        assertEquals('C', v.getEstado());
+        char resEsperado = 'C';
+        char resObtenido = v.getEstado();
+        System.out.println("Test #8 -> testActualizarEstadoCancelado");
+        System.out.println("Resultado Esperado=" + resEsperado);
+        System.out.println("Resultado Obtenido=" + resObtenido);
+        assertEquals(resEsperado, resObtenido);
     }
 
     @Test
     public void testActualizarEstadoPagado() {
-        // CP-010: estado pasa a 'P'
         Venta v = crearVenta(1, 10.0, 350000, 5, 1);
         v.setEstado('P');
-        assertEquals('P', v.getEstado());
+        char resEsperado = 'P';
+        char resObtenido = v.getEstado();
+        System.out.println("Test #9 -> testActualizarEstadoPagado");
+        System.out.println("Resultado Esperado=" + resEsperado);
+        System.out.println("Resultado Obtenido=" + resObtenido);
+        assertEquals(resEsperado, resObtenido);
     }
 
     @Test
-    public void testDescuentoCeroTotalPagarIgualTotalPaquetes() {
-        // con 0% descuento, totalPagar == valorTotalPaquetes
+    public void testDescuentoCeroTotalPagarIgualTotal() {
         Venta v = crearVenta(1, 0.0, 200000, 3, 1);
-        assertEquals(v.calcularValorTotalPaquetes(), v.calcularValorTotalPagar());
+        int resEsperado = v.calcularValorTotalPaquetes();
+        int resObtenido = v.calcularValorTotalPagar();
+        System.out.println("Test #10 -> testDescuentoCeroTotalPagarIgualTotal");
+        System.out.println("Resultado Esperado=" + resEsperado);
+        System.out.println("Resultado Obtenido=" + resObtenido);
+        assertEquals(resEsperado, resObtenido);
     }
 
 }// fin class VentaTest

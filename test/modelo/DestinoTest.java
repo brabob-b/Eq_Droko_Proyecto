@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit4TestClass.java to edit this template
- */
 package modelo;
 
 import java.util.LinkedList;
@@ -9,134 +5,62 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
- * @author brandonbonilla
+ * Pruebas unitarias - Clase Destino
+ * @author Brandon Bonilla Buitrago
+ * @version 1.0 - Mayo 2026
  */
 public class DestinoTest {
-    
-    public DestinoTest() {
+
+    @Test
+    public void testDiasPermanenciaMinimoUno() {
+        LinkedList<String> atr = new LinkedList<>();
+        atr.add("Playa");
+        Destino d = new Destino("Medellin", 0, atr, true);
+        int resEsperado = 1;
+        int resObtenido = d.getDiasPermanencia();
+        System.out.println("Test #1 -> testDiasPermanenciaMinimoUno");
+        System.out.println("Resultado Esperado=" + resEsperado);
+        System.out.println("Resultado Obtenido=" + resObtenido);
+        assertEquals(resEsperado, resObtenido);
     }
 
-    /**
-     * Test of getNombreLugar method, of class Destino.
-     */
     @Test
-    public void testGetNombreLugar() {
-        System.out.println("getNombreLugar");
-        Destino instance = null;
-        String expResult = "";
-        String result = instance.getNombreLugar();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testNombreLugarAsignado() {
+        LinkedList<String> atr = new LinkedList<>();
+        atr.add("Centro historico");
+        Destino d = new Destino("Cartagena", 3, atr, true);
+        String resEsperado = "Cartagena";
+        String resObtenido = d.getNombreLugar();
+        System.out.println("Test #2 -> testNombreLugarAsignado");
+        System.out.println("Resultado Esperado=" + resEsperado);
+        System.out.println("Resultado Obtenido=" + resObtenido);
+        assertEquals(resEsperado, resObtenido);
     }
 
-    /**
-     * Test of getDiasPermanencia method, of class Destino.
-     */
     @Test
-    public void testGetDiasPermanencia() {
-        System.out.println("getDiasPermanencia");
-        Destino instance = null;
-        int expResult = 0;
-        int result = instance.getDiasPermanencia();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testAtractivosIncluidosVerdadero() {
+        LinkedList<String> atr = new LinkedList<>();
+        atr.add("Museo");
+        Destino d = new Destino("Bogota", 2, atr, true);
+        boolean resEsperado = true;
+        boolean resObtenido = d.isAtractivosIncluidos();
+        System.out.println("Test #3 -> testAtractivosIncluidosVerdadero");
+        System.out.println("Resultado Esperado=" + resEsperado);
+        System.out.println("Resultado Obtenido=" + resObtenido);
+        assertTrue(resObtenido);
     }
 
-    /**
-     * Test of getAtractivos method, of class Destino.
-     */
     @Test
-    public void testGetAtractivos() {
-        System.out.println("getAtractivos");
-        Destino instance = null;
-        LinkedList<String> expResult = null;
-        LinkedList<String> result = instance.getAtractivos();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testAtractivosIncluidosFalso() {
+        LinkedList<String> atr = new LinkedList<>();
+        atr.add("Parque");
+        Destino d = new Destino("Cali", 2, atr, false);
+        boolean resEsperado = false;
+        boolean resObtenido = d.isAtractivosIncluidos();
+        System.out.println("Test #4 -> testAtractivosIncluidosFalso");
+        System.out.println("Resultado Esperado=" + resEsperado);
+        System.out.println("Resultado Obtenido=" + resObtenido);
+        assertFalse(resObtenido);
     }
 
-    /**
-     * Test of isAtractivosIncluidos method, of class Destino.
-     */
-    @Test
-    public void testIsAtractivosIncluidos() {
-        System.out.println("isAtractivosIncluidos");
-        Destino instance = null;
-        boolean expResult = false;
-        boolean result = instance.isAtractivosIncluidos();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setNombreLugar method, of class Destino.
-     */
-    @Test
-    public void testSetNombreLugar() {
-        System.out.println("setNombreLugar");
-        String nombreLugar = "";
-        Destino instance = null;
-        instance.setNombreLugar(nombreLugar);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setDiasPermanencia method, of class Destino.
-     */
-    @Test
-    public void testSetDiasPermanencia() {
-        System.out.println("setDiasPermanencia");
-        int diasPermanencia = 0;
-        Destino instance = null;
-        instance.setDiasPermanencia(diasPermanencia);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setAtractivos method, of class Destino.
-     */
-    @Test
-    public void testSetAtractivos() {
-        System.out.println("setAtractivos");
-        LinkedList<String> atractivos = null;
-        Destino instance = null;
-        instance.setAtractivos(atractivos);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setAtractivosIncluidos method, of class Destino.
-     */
-    @Test
-    public void testSetAtractivosIncluidos() {
-        System.out.println("setAtractivosIncluidos");
-        boolean atractivosIncluidos = false;
-        Destino instance = null;
-        instance.setAtractivosIncluidos(atractivosIncluidos);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of toString method, of class Destino.
-     */
-    @Test
-    public void testToString() {
-        System.out.println("toString");
-        Destino instance = null;
-        String expResult = "";
-        String result = instance.toString();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-    
-}
+}// fin class DestinoTest
